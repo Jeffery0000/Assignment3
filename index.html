@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assingment 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="heronsFormula">
+        <h1>Heron's Formula</h1>
+        <form id="heronForm">
+            <label for="heronA">Side a:</label>
+            <input type="number" id="heronA" name="heronA" required/>
+            <label for="heronB">Side b:</label>
+            <input type="number" id="heronB" name="heronB" required/>
+            <label for="heronC">Side c:</label>
+            <input type="number" id="heronC" name="heronC" required/>
+            <label for="heronResult">Area (result):</label>
+            <input type="text" id="heronResult" name="result" readonly/>
+            <input type="submit" value="Calcualte">
+        </form>
+    </div>
+    <div class="ambiguousCase"></div>
+        <h1>Ambiguous Case</h1>
+        <form id="ambiguousForm">
+            <label for="ambiguousAngleA">Angle A:</label>
+            <input type="number" id="ambiguousAngleA" name="ambiguousAngleA" required/>
+            <label for="ambiguousSideA">Side a:</label>
+            <input type="number" id="ambiguousSideA" name="ambiguousSideA" required/>
+            <label for="ambiguousSideB">Side b:</label>
+            <input type="number" id="ambiguousSideB" name="ambiguousSideB" required/>
+            <label for="ambiguousResult">Triangle Type (Result):</label>
+            <input type="text" id="ambiguousResult" name="ambiguousResult" readonly/>
+            <input type="submit" value="Calcualte">
+        </form>
+    <div class="newtonsMethod">
+        <h1>Newton's Method</h1>
+        <form id="newtonsForm">
+            <label for="rootGuess">Root Guess:</label>
+            <input type="number" id="rootGuess" name="rootGuess" required/>
+            <label for="rootApprox">Root Approximation (Result):</label>
+            <input type="text" id="rootApprox" name="rootApprox" readonly/>
+            <input type="submit" value="Calcualte">
+        </form>
+    </div>
+    <div class="polynomialFunction">
+        <h1>Polynomial Function</h1>
+        <form id="polynomialForm">
+            <label for="coefficients">Coefficients:</label>
+            <input type="number" id="coefficients" name="coefficients" required/>
+            <label for="exponents">Exponents:</label>
+            <input type="number" id="exponents" name="exponents" required/>
+            <label for="xValue">x Value:</label>
+            <input type="number" id="xValue" name="xValue" required/>
+            <label for="polynomialFunc">Polynomial Function (result):</label>
+            <input type="text" id="polynomialFunc" name="polynomialFunc" readonly/>
+            <label for="polynomialEvaluation">Polynomial Evaluation (result):</label>
+            <input type="text" id="polynomialEvaluation" name="polynomialEvaluation" readonly/>
+            <input type="submit" value="Calcualte">
+        </form>
+    </div>
+</body>
+</html>
