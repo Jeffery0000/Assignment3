@@ -1,10 +1,3 @@
-
-document.getElementById("heronForm").addEventListener("submit", (event) =>{
-    event.preventDefault();
-    let a = document.getElementById("heronA").value;
-    let b = document.getElementById("heronB").value;
-    let c = document.getElementById("heronC").value;
-    let s = (parseFloat(a) + parseFloat(b) + parseFloat(c)) / 2;
-    let area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
-    document.getElementById("heronResult").value = area;
-});
+const heronsFormula = (a, b, c) => {
+    return (1/4) * Math.sqrt((4 * a * a * b * b) - (Math.pow(((a * a) + (b * b) - (c * c)), 2)));
+}
