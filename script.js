@@ -52,9 +52,32 @@ document.getElementById("ambiguous-form").addEventListener("submit", (event) => 
     ambiguousCase(angleA, sideA, sideB);
 });
 
-const newtonsMethod = (guess) => {
-    
+newtonFunction = (x) => {
+    return (6 * Math.pow(x, 4)) - (13 * Math.pow(x, 3)) - (18 * Math.pow(x, 2)) + (7 * x) + 6;
 }
+
+newtonDerivative = (x) => {
+    return (24 * Math.pow(x, 3)) - (39 * Math.pow(x, 2)) - (36 * x) + 7;
+}
+
+const newtonsMethod = (guess) => {
+    let x1 = guess;
+    let x2 = x1;
+
+    do {
+        x1 = x2
+        x2 = x1 - (newtonFunction(x1)) / (newtonDerivative(x1));
+    } while (Math.abs(x1 - x2) > 0.0001);
+    return Math.round(x2 * 100) / 100;
+}
+
+document.getElementById("newtons-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    console.log("newton");
+    const guess = parseFloat(document.getElementById("root-guess").value);
+    const rootApprox = newtonsMethod(guess);
+    document.getElementById("root-approx").value = rootApprox;
+});
 
 const polynomialFunction = (coefficients, exponents, x) => {
 
