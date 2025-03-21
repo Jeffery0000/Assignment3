@@ -62,13 +62,11 @@ newtonDerivative = (x) => {
 
 const newtonsMethod = (guess) => {
     let x1 = guess;
-    let x2 = x1;
 
     do {
-        x1 = x2
-        x2 = x1 - (newtonFunction(x1)) / (newtonDerivative(x1));
-    } while (Math.abs(x1 - x2) > 0.0001);
-    return Math.round(x2 * 100) / 100;
+        x1 = x1 - (newtonFunction(x1)) / (newtonDerivative(x1));
+    } while (Math.abs(newtonFunction(x1)) > 0.0001);
+    return Math.round(x1 * 100) / 100;
 }
 
 document.getElementById("newtons-form").addEventListener("submit", (event) => {
