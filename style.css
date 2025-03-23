@@ -18,7 +18,7 @@ body {
 .polynomial-function {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
 }
 
@@ -35,7 +35,7 @@ body {
 form {
   display: grid;
   gap: 15px;
-  margin-bottom: 0; 
+  margin-bottom: 0;
 }
 
 label {
@@ -46,11 +46,11 @@ label {
 input[type="number"],
 input[type="text"] {
   width: 100%;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1em;
-  padding: 8px 25px 8px 10px; 
+  padding: 8px 25px 8px 10px;
 }
 
 input[type="submit"] {

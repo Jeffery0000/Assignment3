@@ -52,11 +52,11 @@ document.getElementById("ambiguous-form").addEventListener("submit", (event) => 
     ambiguousCase(angleA, sideA, sideB);
 });
 
-newtonFunction = (x) => {
+const newtonFunction = (x) => {
     return (6 * Math.pow(x, 4)) - (13 * Math.pow(x, 3)) - (18 * Math.pow(x, 2)) + (7 * x) + 6;
 }
 
-newtonDerivative = (x) => {
+const newtonDerivative = (x) => {
     return (24 * Math.pow(x, 3)) - (39 * Math.pow(x, 2)) - (36 * x) + 7;
 }
 
@@ -80,7 +80,7 @@ document.getElementById("newtons-form").addEventListener("submit", (event) => {
 const polynomialFunction = (coefficients, exponents) => {
     let result = '';
     for (let i = 0; i < coefficients.length; i++) {
-        if (i===0) {
+        if (i === 0) {
             result += coefficients[i] + 'x^' + exponents[i];
         }
         else if (coefficients[i] < 0) {
@@ -95,7 +95,7 @@ const polynomialFunction = (coefficients, exponents) => {
 
 const polynomialEvaluation = (coefficients, exponents, x) => {
     let result = 0;
-    for (let i = 0; i <coefficients.length; i++) {
+    for (let i = 0; i < coefficients.length; i++) {
         result += parseFloat(coefficients[i] * Math.pow(x, exponents[i]));
     }
     return result;
@@ -106,7 +106,7 @@ document.getElementById("polynomial-form").addEventListener("submit", (event) =>
     const coefficients = document.getElementById("coefficients").value.split(' ');
     const exponents = document.getElementById("exponents").value.split(' ');
     const x = parseFloat(document.getElementById("x-value").value);
-    
+
     document.getElementById("polynomial-func").value = polynomialFunction(coefficients, exponents);
     document.getElementById("polynomial-evaluation").value = polynomialEvaluation(coefficients, exponents, x);
 });
