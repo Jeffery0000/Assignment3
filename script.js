@@ -77,7 +77,36 @@ document.getElementById("newtons-form").addEventListener("submit", (event) => {
     document.getElementById("root-approx").value = rootApprox;
 });
 
-const polynomialFunction = (coefficients, exponents, x) => {
-
+const polynomialFunction = (coefficients, exponents) => {
+    let result = '';
+    for (let i = 0; i < coefficients.length; i++) {
+        if (i===0) {
+            result += coefficients[i] + 'x^' + exponents[i];
+        }
+        else if (coefficients[i] < 0) {
+            result += ' - ' + Math.abs(coefficients[i]) + 'x^' + exponents[i];
+        }
+        else {
+            result += ' + ' + coefficients[i] + 'x^' + exponents[i];
+        }
+    }
+    return result;
 }
 
+const polynomialEvaluation = (coefficients, exponents, x) => {
+    let result = 0;
+    for (let i = 0; i <coefficients.length; i++) {
+        result += parseFloat(coefficients[i] * Math.pow(x, exponents[i]));
+    }
+    return result;
+}
+
+document.getElementById("polynomial-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const coefficients = document.getElementById("coefficients").value.split(' ');
+    const exponents = document.getElementById("exponents").value.split(' ');
+    const x = parseFloat(document.getElementById("x-value").value);
+    
+    document.getElementById("polynomial-func").value = polynomialFunction(coefficients, exponents);
+    document.getElementById("polynomial-evaluation").value = polynomialEvaluation(coefficients, exponents, x);
+});
