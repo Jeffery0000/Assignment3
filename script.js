@@ -18,6 +18,7 @@ const ambiguousCase = (angleA, sideA, sideB) => {
     let height = sideB * Math.sin(angleA * (Math.PI / 180));
     height = Math.round(height * 100) / 100;
     const sideARounded = Math.round(sideA * 100) / 100;
+    const sideBRounded = Math.round(sideB * 100) / 100;
 
     if (angleA <= 90) {
         if (sideARounded < height) {
@@ -26,18 +27,18 @@ const ambiguousCase = (angleA, sideA, sideB) => {
         else if (sideARounded === height) {
             return "right triangle";
         }
-        else if (sideARounded > height) {
+        else if (sideARounded > sideBRounded) {
             return "one triangle";
         }
-        else if (height < sideARounded && sideARounded < sideB) {
+        else if (height < sideARounded && sideARounded < sideBRounded) {
             return "two triangles";
         }
     }
     else if (angleA < 180) {
-        if (sideARounded < sideB || sideARounded === sideB) {
+        if (sideARounded <= sideBRounded) {
             return "no triangle";
         }
-        else if (sideARounded > sideB) {
+        else if (sideARounded > sideBRounded) {
             return "one triangle";
         }
     }
@@ -84,18 +85,19 @@ document.getElementById("newtons-form").addEventListener("submit", (event) => {
     document.getElementById("root-approx").value = rootApprox;
 });
 
-const polynomialFunction = (coefficients, exponents) => {
-    let result = '';
+const polynomialFunction = (coefficients, exponents, x) => {
+    let result = ['', 0];
     for (let i = 0; i < coefficients.length; i++) {
         if (i === 0) {
-            result += coefficients[i] + 'x^' + exponents[i];
+            result[0] += coefficients[i] + 'x^' + exponents[i];
         }
         else if (coefficients[i] < 0) {
-            result += ' - ' + Math.abs(coefficients[i]) + 'x^' + exponents[i];
+            result[0] += ' - ' + Math.abs(coefficients[i]) + 'x^' + exponents[i];
         }
         else {
-            result += ' + ' + coefficients[i] + 'x^' + exponents[i];
+            result[0] += ' + ' + coefficients[i] + 'x^' + exponents[i];
         }
+        result[1] += parseFloat(coefficients[i] * Math.pow(x, exponents[i]));
     }
     return result;
 }
@@ -114,6 +116,10 @@ document.getElementById("polynomial-form").addEventListener("submit", (event) =>
     const exponents = document.getElementById("exponents").value.split(' ');
     const x = parseFloat(document.getElementById("x-value").value);
 
-    document.getElementById("polynomial-func").value = polynomialFunction(coefficients, exponents);
-    document.getElementById("polynomial-evaluation").value = polynomialEvaluation(coefficients, exponents, x);
+    const array = polynomialFunction(coefficients, exponents, x);
+    const func = array[0];
+    const evaluation = array[1];
+
+    document.getElementById("polynomial-func").value = func;
+    document.getElementById("polynomial-evaluation").value = evaluation;
 });
