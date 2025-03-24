@@ -14,11 +14,11 @@
             <h1>Heron's Formula</h1>
             <form id="heron-form">
                 <label for="heron-a">Side a:</label>
-                <input type="number" id="heron-a" name="heron-a" required />
+                <input type="number" id="heron-a" name="heron-a" required min="0" />
                 <label for="heron-b">Side b:</label>
-                <input type="number" id="heron-b" name="heron-b" required />
+                <input type="number" id="heron-b" name="heron-b" required min="0" />
                 <label for="heron-c">Side c:</label>
-                <input type="number" id="heron-c" name="heron-c" required />
+                <input type="number" id="heron-c" name="heron-c" required min="0" />
                 <label for="heron-result">Area (result):</label>
                 <input type="text" id="heron-result" name="heron-result" readonly />
                 <input type="submit" value="Calculate">
@@ -28,11 +28,11 @@
             <h1>Ambiguous Case</h1>
             <form id="ambiguous-form">
                 <label for="ambiguous-angle-a">Angle A:</label>
-                <input type="number" id="ambiguous-angle-a" name="ambiguous-angle-a" required step=".01" />
+                <input type="number" id="ambiguous-angle-a" name="ambiguous-angle-a" required step=".01" min="0" />
                 <label for="ambiguous-side-a">Side a:</label>
-                <input type="number" id="ambiguous-side-a" name="ambiguous-side-a" required step=".01" />
+                <input type="number" id="ambiguous-side-a" name="ambiguous-side-a" required step=".01" min="0" />
                 <label for="ambiguous-side-b">Side b:</label>
-                <input type="number" id="ambiguous-side-b" name="ambiguous-side-b" required step=".01" />
+                <input type="number" id="ambiguous-side-b" name="ambiguous-side-b" required step=".01" min="0" />
                 <label for="ambiguous-result">Triangle Type (Result):</label>
                 <input type="text" id="ambiguous-result" name="ambiguous-result" readonly />
                 <input type="submit" value="Calculate">

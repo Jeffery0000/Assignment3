@@ -24,7 +24,7 @@ const ambiguousCase = (angleA, sideA, sideB) => {
         if (sideARounded < height) {
             return "no triangle";
         }
-        else if (sideARounded === height) {
+        else if (sideARounded == height) {
             return "right triangle";
         }
         else if (sideARounded > sideBRounded) {
@@ -87,26 +87,31 @@ document.getElementById("newtons-form").addEventListener("submit", (event) => {
 
 const polynomialFunction = (coefficients, exponents, x) => {
     let result = ['', 0];
+
     for (let i = 0; i < coefficients.length; i++) {
-        if (i === 0) {
-            result[0] += coefficients[i] + 'x^' + exponents[i];
+
+        if (i > 0 && coefficients[i] > 0) {
+            result[0] += ' + ';
         }
-        else if (coefficients[i] < 0) {
-            result[0] += ' - ' + Math.abs(coefficients[i]) + 'x^' + exponents[i];
+        else if (i > 0 && coefficients[i] < 0) {
+            result[0] += ' - ';
         }
-        else {
-            result[0] += ' + ' + coefficients[i] + 'x^' + exponents[i];
+
+        if (coefficients[i] != 0) {
+            if (exponents[i] == 0) {
+                result[0] += Math.abs(coefficients[i]);
+            }
+            else if (exponents[i] == 1) {
+                result[0] += Math.abs(coefficients[i]) + 'x';
+            }
+            else {
+                result[0] += Math.abs(coefficients[i]) + 'x^' + exponents[i];
+            }
         }
+
         result[1] += parseFloat(coefficients[i] * Math.pow(x, exponents[i]));
     }
-    return result;
-}
-
-const polynomialEvaluation = (coefficients, exponents, x) => {
-    let result = 0;
-    for (let i = 0; i < coefficients.length; i++) {
-        result += parseFloat(coefficients[i] * Math.pow(x, exponents[i]));
-    }
+    result[1] = Math.round(result[1] * 100) / 100;
     return result;
 }
 
