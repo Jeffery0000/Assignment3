@@ -5,9 +5,9 @@ const heronsFormula = (a, b, c) => {
 document.getElementById("heron-form").addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const a = document.getElementById("heron-a").value;
-    const b = document.getElementById("heron-b").value;
-    const c = document.getElementById("heron-c").value;
+    const a = parseFloat(document.getElementById("heron-a").value);
+    const b = parseFloat(document.getElementById("heron-b").value);
+    const c = parseFloat(document.getElementById("heron-c").value);
     let area = heronsFormula(a, b, c);
 
     area = Math.round(area * 100) / 100;
@@ -31,7 +31,7 @@ const ambiguousCase = (angleA, sideA, sideB) => {
             return "one triangle";
         }
         else if (height < sideARounded && sideARounded < sideBRounded) {
-            return "two triangles";
+            return "two triangles (ambiguous case)";
         }
     }
     else if (angleA < 180) {
@@ -68,10 +68,11 @@ const newtonsMethod = (guess) => {
     }
 
     let x1 = guess;
+    let i = 0;
 
-    do {
+    while (Math.abs(newtonFunction(x1)) > 0.0001 && i < 1000) {
         x1 = x1 - (newtonFunction(x1)) / (newtonDerivative(x1));
-    } while (Math.abs(newtonFunction(x1)) > 0.0001);
+    }
 
     return Math.round(x1 * 100) / 100;
 }
@@ -89,29 +90,35 @@ const polynomialFunction = (coefficients, exponents, x) => {
     let result = ['', 0];
 
     for (let i = 0; i < coefficients.length; i++) {
-
-        if (i > 0 && coefficients[i] > 0) {
-            result[0] += ' + ';
-        }
-        else if (i > 0 && coefficients[i] < 0) {
-            result[0] += ' - ';
-        }
-
         if (coefficients[i] != 0) {
-            if (exponents[i] == 0) {
-                result[0] += Math.abs(coefficients[i]);
+            if (result[0] == '') {
+                if (exponents[i] == 0) {
+                    result[0] += coefficients[i];
+                }
+                else {
+                    result[0] += coefficients[i] + 'x^' + exponents[i];
+                }
             }
-            else if (exponents[i] == 1) {
-                result[0] += Math.abs(coefficients[i]) + 'x';
+            else if (coefficients[i] > 0) {
+                if (exponents[i] == 0) {
+                    result[0] += ' + ' + coefficients[i];
+                }
+                else {
+                    result[0] += ' + ' + coefficients[i] + 'x^' + exponents[i];
+                }
             }
-            else {
-                result[0] += Math.abs(coefficients[i]) + 'x^' + exponents[i];
+            else if (coefficients[i] < 0) {
+                if (exponents[i] == 0) {
+                    result[0] += ' - ' + Math.abs(coefficients[i]);
+                }
+                else {
+                    result[0] += ' - ' + Math.abs(coefficients[i]) + 'x^' + exponents[i];
+                }
             }
         }
-
-        result[1] += parseFloat(coefficients[i] * Math.pow(x, exponents[i]));
+        result[1] += parseFloat(coefficients[i]) * Math.pow(x, parseFloat(exponents[i]));
     }
-    result[1] = Math.round(result[1] * 100) / 100;
+    result[1] = Math.round(result[1] * 1000) / 1000;
     return result;
 }
 
