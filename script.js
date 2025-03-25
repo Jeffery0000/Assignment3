@@ -23,26 +23,20 @@ const ambiguousCase = (angleA, sideA, sideB) => {
     if (angleA <= 90) {
         if (sideARounded < height) {
             return "no triangle";
-        }
-        else if (sideARounded == height) {
+        } else if (sideARounded == height) {
             return "right triangle";
-        }
-        else if (sideARounded > sideBRounded) {
+        } else if (sideARounded > sideBRounded) {
             return "one triangle";
-        }
-        else if (height < sideARounded && sideARounded < sideBRounded) {
+        } else if (height < sideARounded && sideARounded < sideBRounded) {
             return "two triangles (ambiguous case)";
         }
-    }
-    else if (angleA < 180) {
+    } else if (angleA < 180) {
         if (sideARounded <= sideBRounded) {
             return "no triangle";
-        }
-        else if (sideARounded > sideBRounded) {
+        } else if (sideARounded > sideBRounded) {
             return "one triangle";
         }
-    }
-    else {
+    } else {
         return "no triangle";
     }
 }
@@ -94,24 +88,19 @@ const polynomialFunction = (coefficients, exponents, x) => {
             if (result[0] == '') {
                 if (exponents[i] == 0) {
                     result[0] += coefficients[i];
-                }
-                else {
+                } else {
                     result[0] += coefficients[i] + 'x^' + exponents[i];
                 }
-            }
-            else if (coefficients[i] > 0) {
+            } else if (coefficients[i] > 0) {
                 if (exponents[i] == 0) {
                     result[0] += ' + ' + coefficients[i];
-                }
-                else {
+                } else {
                     result[0] += ' + ' + coefficients[i] + 'x^' + exponents[i];
                 }
-            }
-            else if (coefficients[i] < 0) {
+            } else if (coefficients[i] < 0) {
                 if (exponents[i] == 0) {
                     result[0] += ' - ' + Math.abs(coefficients[i]);
-                }
-                else {
+                } else {
                     result[0] += ' - ' + Math.abs(coefficients[i]) + 'x^' + exponents[i];
                 }
             }
